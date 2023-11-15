@@ -1,8 +1,8 @@
 package Payment;
-
+import ThirdParty.*;
 public class Account
 {
-    int balance;
+    float balance;
 
     ProviderAPI provider;
 
