@@ -6,11 +6,11 @@ public class User {
     String password;
     String phoneNumber;
 
-    //Account account;
+    Account account;
 
-       public String getName() {
-           return name;
-       }
+    public String getName() {
+        return name;
+    }
 
     public String getUsername() {
         return username;
@@ -32,6 +32,7 @@ public class User {
     public void setUsername(String username) {
         this.username = username;
     }
+
     public void setPassword(String password) {
         this.password = password;
     }
@@ -39,9 +40,13 @@ public class User {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-  /*  public void setAccount(Account account) {
+
+    public void setAccount(Account account) {
         this.account = account;
     }
-    public account getAccount(){return account;}*/
+
+    public Account getAccount() {
+        return account;
+    }
 
 }
