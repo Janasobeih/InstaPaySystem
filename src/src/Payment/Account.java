@@ -3,29 +3,23 @@ package Payment;
 public class Account
 {
     int balance;
-    ITransferBehaviour transfer;
-    IPayBillBehaviour payBill;
-    //ProviderAPI provider;
+
+    ProviderAPI provider;
 
 
-    public void setTransferBehaviour(ITransferBehaviour transfer) {
-        this.transfer = transfer;
+    public ProviderAPI getProvider() {
+        return provider;
     }
-    public void setPayBill(IPayBillBehaviour payBill)
-    {
-        this.payBill = payBill;
+
+    public void setProvider(ProviderAPI provider) {
+        this.provider = provider;
     }
-    public void PerformTransfer()
-    {
-        transfer.tranfer();
-    }
-    public void PerformPayBill()
-    {
-        payBill.paybill();
-    }
+
     public void setBalance(int balance) {
         this.balance = balance;
     }
 
-
+    public int getBalance() {
+        return balance;
+    }
 }
