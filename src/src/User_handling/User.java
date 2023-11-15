@@ -1,12 +1,12 @@
 package User_handling;
 
 public class User {
-    String name;
-    String username;
-    String password;
-    String phoneNumber;
+  private  String name;
+    private String username;
+    private String password;
+    private  String phoneNumber;
 
-    Account account;
+    private Account account;
 
     public String getName() {
         return name;
