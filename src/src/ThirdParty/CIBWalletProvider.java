@@ -1,5 +1,9 @@
 package ThirdParty;
-
-public class CIBWalletProvider
+import java.util.ArrayList;
+public class CIBWalletProvider extends ProviderAPI
 {
+    public CIBWalletProvider(ArrayList<ThirdPartyCustomer> customers)
+    {
+        super(customers);
+    }
 }
