@@ -1,10 +1,11 @@
 package Payment;
-import ThirdParty.*;
+import ThirdParties.*;
 public class Account
 {
-    float balance;
+    int balance;
 
     ProviderAPI provider;
+    String UserInfo;
 
 
     public ProviderAPI getProvider() {
@@ -21,5 +22,13 @@ public class Account
 
     public int getBalance() {
         return balance;
+    }
+
+    public String getUserInfo() {
+        return UserInfo;
+    }
+
+    public void setUserInfo(String userInfo) {
+        UserInfo = userInfo;
     }
 }

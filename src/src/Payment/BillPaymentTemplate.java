@@ -1,7 +1,7 @@
 package Payment;
 
-import User_handling.InstaPayUsersManager;
-import User_handling.User;
+import User_handling.*;
+import Bill.*;
 
 public abstract class BillPaymentTemplate
 {
@@ -28,9 +28,9 @@ public abstract class BillPaymentTemplate
             return false;
         }
     }
-    public Boolean checkBalance()  //implement getbill in BillCompany
+    public Boolean checkBalance()
     {
-        if(user.getAccount().balance>BillCompany.SendBill(BillCode).balance||verifyBill())
+        if(user.getAccount().balance>BillCompany.getBill(BillCode).balance && verifyBill())
             return true;
         else {
             System.err.println("You Dont Have Enough Balance In Your Account To Complete This Transaction");
@@ -42,6 +42,7 @@ public abstract class BillPaymentTemplate
         if(checkBalance()) {
             user.getAccount().balance -= BillCompany.getBill().amount; //user balance is updated
             Manager.updateBalance(user);
+            System.out.println("Transaction is Completed");
         }
         else
         {
@@ -50,12 +51,11 @@ public abstract class BillPaymentTemplate
         }
 
     }
+    abstract public void printInvoice();
     public void informCompany()
     {
-        BillCompany.removeBill(BillCode);
+        BillCompany.billPayed(BillCode);
     }
-    abstract public void printInvoice();
-
 
     ////////////
     public BillCompany getCompany() {

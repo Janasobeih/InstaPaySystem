@@ -1,38 +1,40 @@
 package Payment;
-import ThirdParty.*;
+import ThirdParties.*;
 import User_handling.*;
-import java.util.Scanner;
+
 public abstract class TransferTemplate
 {
     User user;
     ProviderAPI ReceiverProvider;
     String ReceiverData;
+    int ReceiverBalance;
     InstaPayUsersManager Manager;
-    float amount;
+    int amount;
     final public void transfer()
-    { verifyReceiver();
+    {   verifyReceiver();
         checkBalance();
         update();
-        informProviders();
+        //informProviders();
     }
     public Boolean verifyReceiver()  //bank transfer user.account.getnuber
     {
-        if(ReceiverProvider.userExists(ReceiverData)) //me7tageen neghyar el parameter beta3 userexists le string
+        if(ReceiverProvider.UserExists(ReceiverData)) //me7tageen neghyar el parameter beta3 userexists le string
             return true;
         else
             return false;
     }
-    public Boolean checkBalance()  //sheely el parameter w 7oty cin
+    public Boolean checkBalance()
     {
-       if(user.getAccount().balance>amount)
-           return true;
-       else
-           return false;
+        if(user.getAccount().balance>amount)
+            return true;
+        else
+            return false;
     }
-    abstract public void update();//hena hay7sal el transfer f3lan
-    public void informProviders()
+    abstract public Boolean update();//hena hay7sal el transfer f3lan
+    public void informProviders(User r)
     {
-       ReceiverProvider.updateCustomer(amount); //me7tageen n add this function fe providerAPI
+        ReceiverProvider.UpdateBalance(ReceiverProvider.retreiveBalance(ReceiverData),ReceiverData);  //updating the receiver account
+        user.getAccount().provider.UpdateBalance(user.getAccount().balance,user.getPhoneNumber()); //updating the sender account
     }
     //////////////////////////////////////////////////////////////////////////////////////////
     public User getUser() {
