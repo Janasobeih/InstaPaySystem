@@ -1,11 +1,16 @@
-package User_handling;
+package User_handling.User_handling;
+
+import Payment.Account;
+import ThirdParties.CIBWalletProvider;
+import ThirdParties.FawryWalletProvider;
+import ThirdParties.VodafoneWalletProvider;
 
 import java.util.Scanner;
 
 public class WalletSigningUp extends SigningUpTemplate {
     @Override
     Boolean createAccount() {
-        Account account = new WalletAccount();
+        Account account = new Account();
         Scanner sc = new Scanner(System.in);
         EWalletProviders choice;
         System.out.println("Choose your wallet provider: ");
@@ -29,18 +34,17 @@ public class WalletSigningUp extends SigningUpTemplate {
             default: {
                 System.out.println("Invalid wallet provider");
                 return false;
-                break;
             }
         }
         if (user.getAccount().getProvider().UserExists(user.getPhoneNumber()))
         {
-            account.setUserInfo(user.getPhoneNumber());
-            account.setBalance(user.getAccount().getProvider().retreiveBalance(user.getAccount().getUserInfo()));
-            user.setAccount(account);
-            return true;
+                account.setUserInfo(user.getPhoneNumber());
+                account.setBalance(user.getAccount().getProvider().retreiveBalance(user.getAccount().getUserInfo()));
+                user.setAccount(account);
+                return true;
         }
-        else
-        {
+         else
+         {
             System.out.println("Incorrect wallet information.");
             return false;
         }

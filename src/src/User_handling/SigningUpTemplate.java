@@ -1,11 +1,13 @@
 package User_handling;
-
+import Payment.*;
+import ThirdParties.*;
+import Bill.*;
 import java.util.Scanner;
 
 abstract class SigningUpTemplate {
     protected User user;
     protected OTPverification verification;
-    protected InstaPayUsersManager manager;
+    protected User_handling.InstaPayUsersManager manager;
 
     User getUser() {
         return user;
@@ -17,7 +19,8 @@ abstract class SigningUpTemplate {
 
     public Boolean SignUp() {
         verification = new MobileNumberVerification();
-        if (!verifyPhoneNumber()) {
+        if (!verifyPhoneNumber())
+        {
             System.out.println("Failed to sign up");
             return false;
         } else {

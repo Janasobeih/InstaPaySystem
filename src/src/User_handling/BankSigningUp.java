@@ -1,8 +1,11 @@
 package User_handling;
+import Payment.*;
+import ThirdParties.*;
+import Bill.*;
+import Payment.BankAccount;
+
 
 import java.util.Scanner;
-
-import static User_handling.BankProviders.QNB;
 
 public class BankSigningUp extends SigningUpTemplate {
     @Override
@@ -28,23 +31,26 @@ public class BankSigningUp extends SigningUpTemplate {
             default: {
                 System.out.println("Invalid Bank provider");
                 return false;
-                break;
             }
+
         }
         System.out.println("Please enter your bank account number ");
         String accNo = sc.nextLine();
-        if (user.getAccount().getProvider().UserExists(accNo)) {
+        if (user.getAccount().getProvider().UserExists(accNo))
+        {
             if (user.getAccount().getProvider().authenticateUser(user.getPhoneNumber(), accNo)) {
                 account.setUserInfo(accNo);
                 account.setBalance(user.getAccount().getProvider().retreiveBalance(user.getAccount().getUserInfo()));
                 user.setAccount(account);
                 return true;
-            } else {
+            } else
+            {
                 System.out.println("This phone number isn't associated with the account you entered.");
                 return false;
             }
         } else
         {
+
             System.out.println("No such bank account exists.");
             return false;
         }

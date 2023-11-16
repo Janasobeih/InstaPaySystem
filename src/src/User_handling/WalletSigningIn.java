@@ -1,5 +1,6 @@
-package User_handling;
-public class WalletSigningIn extends SigningInTemplate
+package User_handling.User_handling;
+
+public class WalletSigningIn extends User_handling.SigningInTemplate
 {
     @Override
     public void loadProfile()

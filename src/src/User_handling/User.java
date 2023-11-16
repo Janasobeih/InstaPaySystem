@@ -1,4 +1,7 @@
 package User_handling;
+import Payment.*;
+import ThirdParties.*;
+import Bill.*;
 
 public class User {
   private  String name;

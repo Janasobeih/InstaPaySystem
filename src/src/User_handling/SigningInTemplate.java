@@ -1,11 +1,13 @@
 package User_handling;
-
+import Payment.*;
+import ThirdParties.*;
+import Bill.*;
 import java.util.Scanner;
 
 abstract class SigningInTemplate {
 
     User user;
-    InstaPayUsersManager manager;
+    User_handling.InstaPayUsersManager manager;
 
     User getUser() {
         return user;
